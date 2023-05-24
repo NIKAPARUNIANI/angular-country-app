@@ -1,13 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import countryList from '../../assets/data.json';
+import { ThemeService } from '../theme.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  darkTheme: boolean = false;
+
+  constructor(private themeService: ThemeService, private router: Router) {}
+
+  ngOnInit() {
+    this.themeService.darkTheme.subscribe(theme => {
+      this.darkTheme = theme;
+    });
+  }
   public countries: {
     name: string,
     population: number,
@@ -45,11 +55,8 @@ export class HomeComponent {
     this.isOpen = false;
   }
 
-  constructor(private router: Router) {}
 
   openCountryDetails(country: any) {
     this.router.navigateByUrl(`/country-details/${country.name}`);
   }
-
-  
 }

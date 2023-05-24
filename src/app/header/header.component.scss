@@ -7,4 +7,22 @@ header {
   padding: 0 20px;
   box-shadow: -1px 5px 13px 0px rgba(0, 0, 0, 0.129);
   background-color: white;
+
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  &.darkTheme {
+    background-color: #2B3743;
+    color: white;
+
+    button {
+      color: white;
+      background-color: transparent;
+    }
+  }
 }
