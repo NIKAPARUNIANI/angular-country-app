@@ -1,0 +1,28 @@
+<section class="search">
+  <div>
+    <input type="text" placeholder="Search for a country..." [(ngModel)]="searchText">
+  </div>
+
+  <div class="filter">
+    <div class="selected-option" (click)="toggleDropdown()">
+      <p>{{ selectedOption !== 'All' ? selectedOption : 'Filter by Region' }}</p>
+      <span class="arrow" [ngClass]="{'open': isOpen}"></span>
+    </div>    
+    <ul class="dropdown" *ngIf="isOpen">
+      <li *ngFor="let option of options" (click)="selectOption(option)">
+        {{ option }}
+      </li>
+    </ul>
+  </div>
+  
+</section>
+
+<section class="countries">
+  <div class="mainContainer" *ngFor="let country of filteredCountries" (click)="openCountryDetails(country)">
+    <img [src]="country.flags?.svg" alt="">
+    <h1>{{ country.name }}</h1>
+    <p><span>Population: </span>{{ country.population }}</p>
+    <p><span>Region: </span>{{ country.region }}</p>
+    <p><span>Capital: </span>{{ country.capital }}</p>
+  </div>
+</section>
