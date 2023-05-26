@@ -3,7 +3,7 @@ header {
   justify-content: space-between;
   width: 100%;
   align-items: center;
-  height: 75px;
+  height: 8%;
   padding: 0 20px;
   box-shadow: -1px 5px 13px 0px rgba(0, 0, 0, 0.129);
   background-color: white;
@@ -14,6 +14,10 @@ header {
     cursor: pointer;
     font-size: 17px;
     font-weight: 700;
+
+    i {
+      margin-right: 3px;
+    }
   }
 
   &.darkTheme {
@@ -23,6 +27,19 @@ header {
     button {
       color: white;
       background-color: transparent;
+    }
+  }
+}
+
+@media only screen and (max-width: 475px) {
+  header {
+    justify-content: flex-start;
+    h1 {
+      display: none;
+    }
+
+    button {
+      font-size: 20px;
     }
   }
 }

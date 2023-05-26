@@ -56,13 +56,9 @@
           font-weight: 700;
         }
 
-        &__rightSide {
-          p:last-child {
-            span:last-child {
-              font-weight: 400;
-            }
-          }
-        }
+        .moreLanguages {
+          font-weight: 400;
+        } 
       }
     }
   }

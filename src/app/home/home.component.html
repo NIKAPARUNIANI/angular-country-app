@@ -1,28 +1,30 @@
-<section class="search"  [class.darkTheme]="darkTheme">
-  <div>
-    <input [class.darkTheme]="darkTheme" type="text" placeholder="Search for a country..." [(ngModel)]="searchText">
-  </div>
-
-  <div class="filter" [class.darkTheme]="darkTheme">
-    <div class="selected-option" (click)="toggleDropdown()" [class.darkTheme]="darkTheme">
-      <p>{{ selectedOption !== 'All' ? selectedOption : 'Filter by Region' }}</p>
-      <span [class.darkTheme]="darkTheme" class="arrow" [ngClass]="{'open': isOpen}"></span>
-    </div>    
-    <ul class="dropdown" *ngIf="isOpen" [class.darkTheme]="darkTheme">
-      <li [class.darkTheme]="darkTheme" *ngFor="let option of options" (click)="selectOption(option)">
-        {{ option }}
-      </li>
-    </ul>
+<section class="homePageContainer"  [class.darkTheme]="darkTheme">
+  <div class="search"  [class.darkTheme]="darkTheme">
+    <div>
+      <input [class.darkTheme]="darkTheme" type="text" placeholder="Search for a country..." [(ngModel)]="searchText">
+    </div>
+  
+    <div class="filter" [class.darkTheme]="darkTheme">
+      <div class="selected-option" (click)="toggleDropdown()" [class.darkTheme]="darkTheme">
+        <p>{{ selectedOption !== 'All' ? selectedOption : 'Filter by Region' }}</p>
+        <span [class.darkTheme]="darkTheme" class="arrow" [ngClass]="{'open': isOpen}"></span>
+      </div>    
+      <ul class="dropdown" *ngIf="isOpen" [class.darkTheme]="darkTheme">
+        <li [class.darkTheme]="darkTheme" *ngFor="let option of options" (click)="selectOption(option)">
+          {{ option }}
+        </li>
+      </ul>
+    </div>
+    
   </div>
   
-</section>
-
-<section class="countries" [class.darkTheme]="darkTheme">
-  <div [class.darkTheme]="darkTheme" class="mainContainer" *ngFor="let country of filteredCountries" (click)="openCountryDetails(country)">
-    <img [src]="country.flags?.svg" alt="">
-    <h1>{{ country.name }}</h1>
-    <p><span>Population: </span>{{ country.population }}</p>
-    <p><span>Region: </span>{{ country.region }}</p>
-    <p><span>Capital: </span>{{ country.capital }}</p>
+  <div class="countries" [class.darkTheme]="darkTheme">
+    <div [class.darkTheme]="darkTheme" class="mainContainer" *ngFor="let country of filteredCountries" (click)="openCountryDetails(country)">
+      <img [src]="country.flags?.svg" alt="">
+      <h1>{{ country.name }}</h1>
+      <p><span>Population: </span>{{ country.population }}</p>
+      <p><span>Region: </span>{{ country.region }}</p>
+      <p><span>Capital: </span>{{ country.capital }}</p>
+    </div>
   </div>
 </section>

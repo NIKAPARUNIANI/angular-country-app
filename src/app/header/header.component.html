@@ -1,4 +1,9 @@
 <header [class.darkTheme]="darkTheme">
   <a routerLink=""><h1>Where in the world?</h1></a>
-  <button (click)="darkThemeToggle()"><i class="fa-regular fa-moon"></i>Dark Mode</button>
+  <button (click)="darkThemeToggle()">
+    <i class="fa-solid fa-sun" *ngIf="!darkTheme"></i>
+    <i class="fa-regular fa-moon" *ngIf="darkTheme"></i>
+    <span *ngIf="!darkTheme">Dark Mode</span>
+    <span *ngIf="darkTheme">White Mode</span>
+  </button>
 </header>

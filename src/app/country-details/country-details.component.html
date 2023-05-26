@@ -19,7 +19,7 @@
         <div class="rightInfoContent__rightSide">
           <p><span>Top Level Domain:</span>  {{ country.topLevelDomain }}</p>
           <p><span>Currencies:</span>  {{ country.currencies[0]?.code }}</p>
-          <p><span>Languages:</span>  <span *ngFor="let language of country?.languages; let isLast = last">
+          <p><span>Languages:</span>  <span class="moreLanguages" *ngFor="let language of country?.languages; let isLast = last">
             {{ language.name }}{{ isLast ? '' : ', ' }}
           </span></p>
         </div>
