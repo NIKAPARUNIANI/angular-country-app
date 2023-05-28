@@ -1,0 +1,36 @@
+<section class="container forms" [class.darkTheme]="darkTheme">
+    <div class="form signup" [class.darkTheme]="darkTheme">
+    <div class="form-content">
+        <header [class.darkTheme]="darkTheme">Signup</header>
+        <form [formGroup]="signupForm" (ngSubmit)="onSignUp()">
+            <!-- User Name -->
+            <div class="field input-field">
+                <input [class.darkTheme]="darkTheme" type="text" name="userName" placeholder="User Name" class="password" formControlName="userName" [(ngModel)]="signupObj.userName">
+                <div>
+                <div class="error" *ngIf="signupForm.controls['userName'].invalid && (signupForm.controls['userName'].dirty || signupForm.controls['userName'].touched)">User Name should be at least 3 characters.</div>
+                </div>
+            </div>
+            <!-- Email -->
+            <div class="field input-field">
+                <input [class.darkTheme]="darkTheme" type="email" name="email" placeholder="Email" class="input" formControlName="email" [(ngModel)]="signupObj.email">
+                <div>
+                    <div class="error" *ngIf="signupForm.controls['email'].invalid && (signupForm.controls['email'].dirty || signupForm.controls['email'].touched)">Email should be valid.</div>
+                </div>
+            </div>
+            <!-- Password -->
+            <div class="field input-field">
+                <input [class.darkTheme]="darkTheme" type="password" name="password" placeholder="Confirm password" class="password" formControlName="password" [(ngModel)]="signupObj.password">
+                <div>
+                    <div class="error" *ngIf="signupForm.controls['password'].invalid && (signupForm.controls['password'].dirty || signupForm.controls['password'].touched)">Password should be at least 6 characters.</div>
+                </div>
+            </div>
+            <div class="field button-field">
+                <button type="submit" [disabled]="signupForm.invalid">Signup</button>
+            </div>
+            </form>
+            <div class="form-link">
+                <span [class.darkTheme]="darkTheme">Already have an account? <a routerLink="/login" class="link login-link">Login</a></span>
+            </div>
+            </div>
+    </div>
+</section>

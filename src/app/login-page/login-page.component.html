@@ -1,0 +1,28 @@
+
+<section class="container forms" [class.darkTheme]="darkTheme">
+    <div class="form login" [class.darkTheme]="darkTheme">
+        <div class="form-content">
+            <header [class.darkTheme]="darkTheme">Login</header>
+            <form action="#" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+                <div class="field input-field">
+                    <input [class.darkTheme]="darkTheme" type="text" name="userName" placeholder="User Name" class="input" formControlName="userName" [(ngModel)]="loginObj.userName">
+                    <div>
+                        <div class="error" *ngIf="loginForm.controls['userName'].invalid && (loginForm.controls['userName'].dirty || loginForm.controls['userName'].touched)">User Name should be at least 3 characters.</div>
+                    </div>
+                </div>
+                <div class="field input-field">
+                    <input [class.darkTheme]="darkTheme" type="password" name="password" placeholder="Password" class="input" formControlName="password" [(ngModel)]="loginObj.password">
+                    <div>
+                        <div class="error" *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">Password should be at least 6 characters.</div>
+                    </div>
+                </div>
+                <div class="field button-field">
+                    <button type="submit" [disabled]="loginForm.invalid">Login</button>
+                </div>
+            </form>
+            <div class="form-link">
+                <span [class.darkTheme]="darkTheme">Don't have an account? <a routerLink="/signup" class="link signup-link">Signup</a></span>
+            </div>
+        </div>
+    </div>
+</section>

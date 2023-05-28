@@ -8,18 +8,6 @@ header {
   box-shadow: -1px 5px 13px 0px rgba(0, 0, 0, 0.129);
   background-color: white;
 
-  button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 17px;
-    font-weight: 700;
-
-    i {
-      margin-right: 3px;
-    }
-  }
-
   &.darkTheme {
     background-color: #2B3743;
     color: white;
@@ -29,9 +17,64 @@ header {
       background-color: transparent;
     }
   }
+
+  .userAndTheme {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 17px;
+      font-weight: 700;
+      i {
+        margin-right: 4px;
+      }
+    }
+    img {
+      width: 40px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    .menu-container {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: #fff;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 85px;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+
+      li {
+        padding: 8px 10px;
+        cursor: pointer;
+      }
+
+      li:hover {
+        box-shadow: -1px 5px 13px 0px rgba(0, 0, 0, 0.129);
+      }
+
+      &.darkTheme {
+        background-color: #2B3743;
+        color: white;
+      }
+    }
+  }
 }
 
-@media only screen and (max-width: 475px) {
+@media only screen and (max-width: 590px) {
   header {
     justify-content: flex-start;
     h1 {
@@ -39,7 +82,7 @@ header {
     }
 
     button {
-      font-size: 20px;
+      font-size: 15px;
     }
   }
 }

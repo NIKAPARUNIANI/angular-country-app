@@ -6,12 +6,22 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ThemeService {
   private darkThemeSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
   public darkTheme = this.darkThemeSubject.asObservable();
 
-  constructor() {}
+  constructor() {
+    const storedTheme = localStorage.getItem('darkTheme');
+
+    if (storedTheme !== null) {
+      this.darkThemeSubject.next(storedTheme === 'true');
+    }
+  }
 
   toggleDarkTheme() {
     const currentTheme = this.darkThemeSubject.getValue();
-    this.darkThemeSubject.next(!currentTheme);
+    const newTheme = !currentTheme;
+    this.darkThemeSubject.next(newTheme);
+
+    localStorage.setItem('darkTheme', newTheme.toString());
   }
 }

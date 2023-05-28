@@ -1,9 +1,23 @@
 <header [class.darkTheme]="darkTheme">
   <a routerLink=""><h1>Where in the world?</h1></a>
-  <button (click)="darkThemeToggle()">
-    <i class="fa-solid fa-sun" *ngIf="!darkTheme"></i>
-    <i class="fa-regular fa-moon" *ngIf="darkTheme"></i>
-    <span *ngIf="!darkTheme">Dark Mode</span>
-    <span *ngIf="darkTheme">White Mode</span>
-  </button>
+  <div class="userAndTheme">
+    <button routerLink="/login" *ngIf="!userService.isLoggedIn.getValue()">
+      <i class="fa-solid fa-right-to-bracket"></i>
+      LogIn
+    </button>
+
+    <div class="menu-container" *ngIf="isLoggedIn || userService.isLoggedIn.getValue()">
+      <img src="../../assets/user.svg" alt="" (click)="toggleMenu()">
+      <ul class="menu" *ngIf="showMenu" [class.darkTheme]="darkTheme">
+        <li (click)="signOut()">Sign Out</li>
+      </ul>
+    </div>
+
+    <button (click)="darkThemeToggle()">
+      <i class="fa-solid fa-sun" *ngIf="darkTheme"></i>
+      <i class="fa-regular fa-moon" *ngIf="!darkTheme"></i>
+      <span *ngIf="!darkTheme">Dark Mode</span>
+      <span *ngIf="darkTheme">White Mode</span>
+    </button>
+  </div>
 </header>

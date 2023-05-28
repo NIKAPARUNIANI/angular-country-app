@@ -63,3 +63,86 @@
     }
   }
 }
+
+@media only screen and (max-width: 1200px) {
+  .moreInfoParent {
+    .moreInfo {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      flex-direction: column;
+
+      .rightInfo {
+        .rightInfoContent {
+          font-size: 18px;
+        }
+      }
+
+      .leftInfo {
+        img {
+          width: 400px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .moreInfoParent {
+    .moreInfo {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      flex-direction: column;
+      height: 597px;
+      justify-content: center;
+
+      .rightInfo {
+        .rightInfoContent {
+          height: 135px;
+          display: flex;
+          font-size: 17px;
+          width: max-content;
+          gap: 0;
+          flex-direction: column;
+        }
+      }
+
+      .leftInfo {
+        img {
+          width: 300px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .moreInfoParent {
+    .moreInfo {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      flex-direction: column;
+      height: 597px;
+      justify-content: center;
+
+      .rightInfo {
+        .rightInfoContent {
+          height: 135px;
+          display: flex;
+          width: max-content;
+          gap: 0;
+          flex-direction: column;
+          font-size: 15px;
+        }
+      }
+
+      .leftInfo {
+        img {
+          width: 250px;
+        }
+      }
+    }
+  }
+}
