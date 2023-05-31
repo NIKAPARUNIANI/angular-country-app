@@ -32,7 +32,12 @@ export class UserService {
   }
 
   checkUserExist(username: string, password: string): boolean {
-    const isUserExist = this.signupUsers.find(user => user.userName === username && user.password === password);
-    return isUserExist !== undefined;
+    const localData = localStorage.getItem('signUpUsers');
+    if (localData != null) {
+      const signupUsers: any[] = JSON.parse(localData);
+      const isUserExist = signupUsers.find((user: any) => user.userName === username && user.password === password);
+      return isUserExist !== undefined;
+    }
+    return false;
   }
-}
+}  

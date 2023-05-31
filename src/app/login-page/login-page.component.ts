@@ -33,13 +33,14 @@ export class LoginPageComponent {
   onLogin() {
     const isUserExist = this.userService.checkUserExist(this.loginObj.userName, this.loginObj.password);
     if (isUserExist) {
-      this.userService.addUser(this.loginObj);
-      this.isLoggedIn = true;
+      this.userService.isLoggedIn.next(true);
+      this.userService.loggedInUser = this.loginObj;
+      this.userService.updateLocalStorage();
       this.router.navigate(['/home']);
     } else {
       alert('User does not exist');
     }
-  }
+  }  
 
   darkTheme: boolean = false;
 
@@ -47,5 +48,8 @@ export class LoginPageComponent {
     this.themeService.darkTheme.subscribe(theme => {
       this.darkTheme = theme;
     });
+  }
+  goBack(): void {
+    this.router.navigate(['/home']);
   }
 }

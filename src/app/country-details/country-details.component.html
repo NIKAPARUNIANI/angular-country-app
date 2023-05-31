@@ -1,6 +1,5 @@
 <div *ngIf="country" class="moreInfoParent"  [class.darkTheme]="darkTheme">
-  <a routerLink="" [class.darkTheme]="darkTheme"><i class="fa-solid fa-arrow-left"></i> Back</a>
-  <section class="moreInfo">
+  <a (click)="goBack()" [class.darkTheme]="darkTheme"><i class="fa-solid fa-arrow-left"></i> Back</a>  <section class="moreInfo">
     <div class="leftInfo">
       <img [src]="country.flags.svg" alt="Flag">
     </div>

@@ -50,4 +50,8 @@ export class SignupPageComponent {
       this.darkTheme = theme;
     });
   }
+
+  goBack(): void {
+    this.router.navigate(['/home']);
+  }  
 }

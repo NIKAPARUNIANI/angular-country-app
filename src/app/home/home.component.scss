@@ -240,9 +240,6 @@
 @media only screen and (max-width: 550px) {
   .homePageContainer {
     .search {
-      flex-direction: column;
-      height: 175px;
-
       input {
         height: 60px;
         width: 350px;
@@ -254,9 +251,6 @@
 @media only screen and (max-width: 435px) {
   .homePageContainer {
     .search {
-      flex-direction: column;
-      height: 175px;
-
       input {
         height: 60px;
         width: 300px;
@@ -268,9 +262,6 @@
 @media only screen and (max-width: 355px) {
   .homePageContainer {
     .search {
-      flex-direction: column;
-      height: 175px;
-
       input {
         height: 60px;
         width: 275px;
@@ -291,9 +282,6 @@
 @media only screen and (max-width: 330px) {
   .homePageContainer {
     .search {
-      flex-direction: column;
-      height: 175px;
-
       input {
         height: 60px;
         width: 250px;
@@ -314,21 +302,8 @@
 @media only screen and (max-width: 290px) {
   .homePageContainer {
     .search {
-      flex-direction: column;
-      height: 175px;
-
       input {
-        height: 60px;
         width: 225px;
-      }
-    }
-
-    .countries {
-      .mainContainer {
-        width: 250px;
-        img {
-          width: 250px;
-        }
       }
     }
   }

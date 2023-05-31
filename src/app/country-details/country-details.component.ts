@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import countryList from '../../assets/data.json';
 import { ThemeService } from '../theme.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-country-details',
@@ -12,7 +13,12 @@ export class CountryDetailsComponent implements OnInit {
   darkTheme: boolean = false;
   public country: any;
 
-  constructor(private route: ActivatedRoute, private themeService: ThemeService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private themeService: ThemeService,
+    private location: Location
+  ) { }
 
   ngOnInit() {
     const countryName = this.route.snapshot.paramMap.get('countryName');
@@ -21,4 +27,12 @@ export class CountryDetailsComponent implements OnInit {
       this.darkTheme = theme;
     });
   }
+
+  goBack(): void {
+    const queryParams = this.route.snapshot.queryParamMap;
+    const option = queryParams.get('option');
+    const search = queryParams.get('search');
+  
+    this.router.navigate(['/home'], { queryParams: { option, search } });
+  }  
 }

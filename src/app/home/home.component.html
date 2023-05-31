@@ -1,7 +1,7 @@
 <section class="homePageContainer"  [class.darkTheme]="darkTheme">
   <div class="search"  [class.darkTheme]="darkTheme">
     <div>
-      <input [class.darkTheme]="darkTheme" type="text" placeholder="Search for a country..." [(ngModel)]="searchText">
+      <input [class.darkTheme]="darkTheme" type="text" placeholder="Search for a country..." [(ngModel)]="searchText" (input)="updateSearchText()">
     </div>
   
     <div class="filter" [class.darkTheme]="darkTheme">

@@ -81,8 +81,14 @@ header {
       display: none;
     }
 
-    button {
-      font-size: 15px;
+    .userAndTheme {
+      button {
+        font-size: 15px;
+      }
+
+      .menu {
+        left: 0;
+      }
     }
   }
 }

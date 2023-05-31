@@ -1,4 +1,5 @@
 <section class="container forms" [class.darkTheme]="darkTheme">
+    <a (click)="goBack()" [class.darkTheme]="darkTheme" class="back"><i class="fa-solid fa-arrow-left"></i> Back</a>
     <div class="form signup" [class.darkTheme]="darkTheme">
     <div class="form-content">
         <header [class.darkTheme]="darkTheme">Signup</header>
@@ -19,7 +20,7 @@
             </div>
             <!-- Password -->
             <div class="field input-field">
-                <input [class.darkTheme]="darkTheme" type="password" name="password" placeholder="Confirm password" class="password" formControlName="password" [(ngModel)]="signupObj.password">
+                <input [class.darkTheme]="darkTheme" type="password" name="password" placeholder="Password" class="password" formControlName="password" [(ngModel)]="signupObj.password">
                 <div>
                     <div class="error" *ngIf="signupForm.controls['password'].invalid && (signupForm.controls['password'].dirty || signupForm.controls['password'].touched)">Password should be at least 6 characters.</div>
                 </div>
