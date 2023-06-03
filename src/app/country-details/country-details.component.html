@@ -1,27 +1,32 @@
-<div *ngIf="country" class="moreInfoParent"  [class.darkTheme]="darkTheme">
-  <a (click)="goBack()" [class.darkTheme]="darkTheme"><i class="fa-solid fa-arrow-left"></i> Back</a>  <section class="moreInfo">
+<div *ngIf="country" class="moreInfoParent" [class.darkTheme]="darkTheme">
+  <a (click)="goBack()" [class.darkTheme]="darkTheme"><i class="fa-solid fa-arrow-left"></i> Back</a>
+  <section class="moreInfo">
     <div class="leftInfo">
       <img [src]="country.flags.svg" alt="Flag">
     </div>
     <div class="rightInfo">
-      <div class="rightInfoTitle">
-        <h1>{{ country.name }}</h1>
-      </div>
       <div class="rightInfoContent">
+        <h1>{{ country.name }}</h1>
         <div class="rightInfoContent__leftSide">
           <p><span>Native Name:</span>  {{ country.nativeName }}</p>
           <p><span>Population:</span>  {{ country.population }}</p>
           <p><span>Region:</span>  {{ country.region }}</p>
           <p><span>Sub Region:</span>  {{ country.subregion }}</p>
           <p><span>Capital:</span>  {{ country.capital }}</p>
+          <p><span>Top Level Domain:</span>  {{ country.topLevelDomain[0] }}</p>
+          <p><span>Currencies:</span>  {{ country.currencies[0].code }}</p>
+          <p><span>Languages:</span>
+            <span class="moreLanguages" *ngFor="let language of country.languages; let isLast = last">
+              {{ language.name }}{{ isLast ? '' : ', ' }}
+            </span>
+          </p>
         </div>
-        <div class="rightInfoContent__rightSide">
-          <p><span>Top Level Domain:</span>  {{ country.topLevelDomain }}</p>
-          <p><span>Currencies:</span>  {{ country.currencies[0]?.code }}</p>
-          <p><span>Languages:</span>  <span class="moreLanguages" *ngFor="let language of country?.languages; let isLast = last">
-            {{ language.name }}{{ isLast ? '' : ', ' }}
-          </span></p>
-        </div>
+
+        <div class="borders">
+          <p>Borders: <span [class.darkTheme]="darkTheme" *ngFor="let border of getFullBorders()" (click)="navigateToCountry(border)">
+            {{ border }}
+          </span></p>          
+        </div>        
       </div>
     </div>
   </section>

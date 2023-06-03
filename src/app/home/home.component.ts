@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import countryList from '../../assets/data.json';
 import { ThemeService } from '../theme.service';
+import { Country } from '../models/country.model';
 
 @Component({
   selector: 'app-home',
@@ -9,14 +10,19 @@ import { ThemeService } from '../theme.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  darkTheme: boolean = false;
+  public darkTheme: boolean = false;
+  public isOpen: boolean = false;
+  public selectedOption: string = 'All';
+  public options: string[] = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+  public countries: Country [] = countryList;
+  public searchText: string = '';
 
   constructor(
     private themeService: ThemeService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
-  
+
   ngOnInit() {
     this.route.queryParamMap.subscribe(params => {
       this.selectedOption = params.get('option') || 'All';
@@ -26,19 +32,9 @@ export class HomeComponent implements OnInit {
     this.themeService.darkTheme.subscribe(theme => {
       this.darkTheme = theme;
     });
-  }  
-  public countries: {
-    name: string,
-    population: number,
-    region: string,
-    capital: string,
-    flags: any,
-    svg: string
-  }[] = countryList;
+  }
 
-  public searchText: string = '';
-
-  get filteredCountries(): any[] {
+  public get filteredCountries(): any[] {
     if (!this.searchText && this.selectedOption === 'All') {
       return this.countries;
     }
@@ -49,27 +45,20 @@ export class HomeComponent implements OnInit {
       const regionMatches = this.selectedOption === 'All' || country.region === this.selectedOption;
       return nameMatches && regionMatches;
     });
-  }  
+  }
 
-  
-
-  isOpen = false;
-  selectedOption: string = 'All';
-  options: string[] = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
-
-  toggleDropdown(): void {
+  public toggleDropdown(): void {
     this.isOpen = !this.isOpen;
     this.goToFilteredResults();
   }
-  
 
-  selectOption(option: string): void {
+  public selectOption(option: string): void {
     this.selectedOption = option;
     this.isOpen = false;
     this.goToFilteredResults();
   }  
 
-  goToFilteredResults(): void {
+  public goToFilteredResults(): void {
     this.router.navigate(['/home'], {
       queryParams: {
         option: this.selectedOption,
@@ -79,8 +68,7 @@ export class HomeComponent implements OnInit {
     });
   }  
 
-
-  openCountryDetails(country: any) {
+  public openCountryDetails(country: any) {
     this.router.navigate(['/country-details', country.name], {
       queryParams: {
         option: this.selectedOption,
@@ -89,7 +77,17 @@ export class HomeComponent implements OnInit {
     });
   }  
   
-  updateSearchText(): void {
+  public updateSearchText(): void {
     this.goToFilteredResults();
+  }
+
+  @HostListener('document:click', ['$event'])
+  public onDocumentClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    const menuContainer = document.querySelector('.filter');
+
+    if (menuContainer && !menuContainer.contains(target)) {
+      this.isOpen = false;
+    }
   }
 }

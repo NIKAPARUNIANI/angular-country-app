@@ -1,12 +1,13 @@
 .moreInfoParent {
+  min-height: 92%;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 92%;
+  height: max-content;
   position: relative;
   a {
     position: absolute;
-    top: 5%;
+    top: 2%;
     left: 3%;
     width: 100px;
     height: 35px;
@@ -31,15 +32,17 @@
   }
   .moreInfo {
     display: flex;
-    width: 100%;
+    width: max-content;
     justify-content: space-between;
     margin: 0px 15%;
+    height: max-content;
 
     .leftInfo {
       height: max-content;
       img {
         width: 550px;
         margin-right: 20px;
+        box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
       }
     }
 
@@ -48,11 +51,49 @@
       flex-direction: column;
       justify-content: center;
       .rightInfoContent {
-        height: 135px;
+        height: 100%;
         display: flex;
         font-size: 20px;
         width: max-content;
-        gap: 85px;
+        gap: 15px;
+        flex-direction: column;
+        justify-content: center;
+
+        .borders {
+          display: flex;
+          flex-wrap: wrap;
+          p {
+            flex-basis: max-content;
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            font-weight: 700;
+            flex-wrap: wrap;
+            width: 35vw;
+
+            span {
+              user-select: none;
+              cursor: pointer;
+              padding: 0px 5px;
+              width: max-content;
+              min-height: 35px;
+              max-width: max-content;
+              background-color: white;
+              display: flex;
+              align-items: center;
+              justify-content: space-evenly;
+              box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+              font-weight: 400;
+  
+              &.darkTheme {
+                background-color: #2A3642;
+                color: white;
+              }
+            }
+          }
+
+
+        }
 
         span {
           font-weight: 700;
@@ -77,6 +118,12 @@
       .rightInfo {
         .rightInfoContent {
           font-size: 18px;
+
+          .borders {
+            p {
+              width: 65vw;
+            }
+          }
         }
       }
 
@@ -93,8 +140,6 @@
 @media only screen and (max-width: 600px) {
   .moreInfoParent {
     .moreInfo {
-      height: 597px;
-      justify-content: center;
 
       .rightInfo {
         .rightInfoContent {

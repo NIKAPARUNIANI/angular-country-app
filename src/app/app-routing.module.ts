@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'signup', component: SignupPageComponent },
   { path: 'country-details/:countryName', component: CountryDetailsComponent },
-  { path: '',   redirectTo: 'home', pathMatch: 'full' }
+  { path: '',   redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', redirectTo: 'home' }
 ];
 
 @NgModule({

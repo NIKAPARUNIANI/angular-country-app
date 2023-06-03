@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { ThemeService } from '../theme.service';
 import { UserService } from '../user.service';
@@ -9,9 +9,9 @@ import { UserService } from '../user.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  darkTheme: boolean = false;
-  isLoggedIn: boolean = false;
-  showMenu: boolean = false;
+  public darkTheme: boolean = false;
+  public isLoggedIn: boolean = false;
+  public isOpen: boolean = false;
 
   constructor(
     private router: Router,
@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
     public userService: UserService
   ) {}
 
-  ngOnInit() {
+  public ngOnInit() {
     this.themeService.darkTheme.subscribe(theme => {
       this.darkTheme = theme;
     });
@@ -27,21 +27,27 @@ export class HeaderComponent implements OnInit {
       this.isLoggedIn = isLoggedIn;
     });
 
-    this.showMenu = false;
+    this.isOpen = false;
   }
-
-  darkThemeToggle() {
+  public darkThemeToggle() {
     this.themeService.toggleDarkTheme();
   }
-
-  toggleMenu() {
-    this.showMenu = !this.showMenu;
+  public toggleMenu() {
+    this.isOpen = !this.isOpen;
   }
-
-  signOut() {
+  public signOut() {
     this.userService.isLoggedIn.next(false);
     this.userService.updateLocalStorage();
-    this.showMenu = false;
+    this.isOpen = false;
     this.router.navigate(['/home']);
+  }
+  @HostListener('document:click', ['$event'])
+  public onDocumentClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    const menuContainer = document.querySelector('.menu-container');
+
+    if (menuContainer && !menuContainer.contains(target)) {
+      this.isOpen = false;
+    }
   }
 }

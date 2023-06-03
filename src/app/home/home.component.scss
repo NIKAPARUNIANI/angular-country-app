@@ -39,6 +39,8 @@
       img {
         border-radius: 10px 10px 0 0;
         width: 300px;
+        height: 180px;
+        object-fit: cover;
         box-shadow: -1px 5px 13px 0px rgba(0, 0, 0, 0.05);
       }
   
@@ -74,18 +76,33 @@
     display: flex;
     justify-content: space-between;
     padding: 3% 10% 0 10%;
+
+    .searchInput {
+      height: 60px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.129);
+      outline: none;
+      font-size: 17px;
+      text-indent: 7px;
+      background-color: white;
+
+      &.darkTheme {
+        background-color: #2B3743;
+        color: white;
+      }
+    }
   
     &.darkTheme {
       background-color: #202D36;
     }
   
     input { 
-      width: 450px;
+      width: 400px;
       height: 60px;
       text-indent: 20px;
       border: none;
       border-radius: 10px;
-      box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.129);
       outline: none;
       font-size: 17px;
   
@@ -242,7 +259,7 @@
     .search {
       input {
         height: 60px;
-        width: 350px;
+        width: 300px;
       }
     }
   }
@@ -253,7 +270,7 @@
     .search {
       input {
         height: 60px;
-        width: 300px;
+        width: 250px;
       }
     }
   }
@@ -264,7 +281,7 @@
     .search {
       input {
         height: 60px;
-        width: 275px;
+        width: 200px;
       }
     }
 
@@ -282,9 +299,12 @@
 @media only screen and (max-width: 330px) {
   .homePageContainer {
     .search {
+
+      label {
+        display: none;
+      }
       input {
-        height: 60px;
-        width: 250px;
+        width: 205px;
       }
     }
 
@@ -303,7 +323,7 @@
   .homePageContainer {
     .search {
       input {
-        width: 225px;
+        width: 195px;
       }
     }
   }

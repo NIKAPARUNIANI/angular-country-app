@@ -3,6 +3,7 @@ import { UserService } from '../user.service';
 import { ThemeService } from '../theme.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { signup } from '../models/login.model';
 
 @Component({
   selector: 'app-signup-page',
@@ -10,13 +11,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup-page.component.scss']
 })
 export class SignupPageComponent {
-  signupObj: any = {
+  public signupObj: signup = {
     userName: '',
     email: '',
     password: ''
   };
-
-  signupForm = new FormGroup({
+  public signupForm: FormGroup = new FormGroup({
     userName: new FormControl('', [
       Validators.required,
       Validators.minLength(3)
@@ -30,28 +30,25 @@ export class SignupPageComponent {
       Validators.minLength(6)
     ]),
   });
+  public darkTheme: boolean = false;
 
   constructor(private userService: UserService, private themeService: ThemeService, private router: Router) {}
-
-
-  onSignUp() {
-    if (this.signupForm.valid) {
-      this.userService.addUser(this.signupObj);
-      this.signupForm.reset();
-      this.router.navigate(['/home']);
-    }
-  }
-  
-
-  darkTheme: boolean = false;
 
   ngOnInit() {
     this.themeService.darkTheme.subscribe(theme => {
       this.darkTheme = theme;
     });
   }
+  
+  public onSignUp() {
+    if (this.signupForm.valid) {
+      this.userService.addUser(this.signupObj);
+      this.signupForm.reset();
+      this.router.navigate(['/home']);
+    }
+  }
 
-  goBack(): void {
+  public goBack(): void {
     this.router.navigate(['/home']);
   }  
 }
